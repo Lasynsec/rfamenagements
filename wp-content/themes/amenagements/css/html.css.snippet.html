@@ -1,0 +1,714 @@
+//************************************************************************************************************************
+///Cheat Sheet--------------------------------------------------------------------------------------------------------------------** Cheat Sheet
+//************************************************************************************************************************
+
+http://adam-marsden.co.uk/css-cheat-sheet/
+
+//************************************************************************************************************************
+///Formulaire type complet--------------------------------------------------------------------------------------------------------------------** Form
+//************************************************************************************************************************
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Formulaire traité par PHP</title>
+<style type="text/css">
+fieldset {border-width: 3px; border-style: double; border: #993300}
+</style>
+</head>
+<body>
+<form action="cible.php" method="post" enctype="application/x-www-form-urlencoded">
+<!-- Premier groupe de composants-->
+  <fieldset>
+    <legend><b>Vos coordonnées</b></legend>
+    <label>Nom : </label><input type="text" name="nom" size="40" maxlength="256"  /><br />
+    <label>Mail : </label><input type="email" name="mail" pattern="(^[a-z0-9]+)@([a-z0-9])+(\.)([a-z]{2,4})"  /><br />
+    <label>Téléphone : </label><input type="tel" name="tel"  pattern="^0[0-9]{9}"  /><br />
+    <label>Code : </label><input type="password" name="code" size="40" maxlength="6" /> <br />
+    <label>Département : </label><input type="number" name="num" min="1" max="101" /> <br />
+    <label>Date : </label><input type="date" name="date" min="1960_01_01" max="1994-01-01" /> <br />
+
+    <input type="radio" name="sexe" value="homme" /> Homme<br />
+    <input type="radio" name="sexe" value="femme" /> Femme<br />
+    <select name="pays" size="1">
+    <option value="France"> France</option>
+    <option value="Belgique"> Belgique</option>
+    <option value="Suisse"> Suisse</option>
+    <option value="Canada"> Canada</option>
+    </select>
+    <br />
+  </fieldset>
+<!-- Deuxième groupe de composants-->
+  <fieldset>
+    <legend><b>Vos goûts</b></legend>
+  <input type="checkbox" name="pomme" value="pomme" /> Pommes<br />
+   <input type="checkbox" name="poire" value="poire" /> Poires<br />
+  <input type="checkbox" name="scoubidou" value="scoubidou" /> Scoubidous<br />
+    <textarea name="gouts" cols="50" rows="5" onclick="this.value=''">
+     Décrivez vos goûts en détail
+    </textarea>
+    <br /><br />
+  </fieldset>
+<!-- Troisième groupe de composants-->
+  <fieldset>
+    <legend><b>Envoyez nous votre photo</b></legend>
+    <input type="file" name="fichier" accept="image/jpeg" />
+    <input type="hidden" name="MAX_FILE_SIZE" value="10000" />
+    <br /><br />
+    <input type="reset" value="Effacer" />
+    &nbsp;&nbsp;&nbsp;<input type="submit" value="Envoyer" />
+    <br /><br />
+  </fieldset>
+</form>
+</body>
+</html>
+
+
+**************************************************************************************************************************************
+Appliquer un style: les selecteurs avancés------------------------------------------------------------------------------------------**selecteurs
+**************************************************************************************************************************************
+
+p{}:     «je veux toucher tous les paragraphes».
+h1, em{}:«Tous les titres et tous les textes importants».
+*{}:     «Selectionne tous les balises sans exception».
+h3 em{}: «Selectionne toute les balises <em> dans les balises <h3>».
+h3 + p{}:«Selectionne la première balise <p> situe après un titre <h3>».
+a[title]: «Selectionne tous les balise <a> qui possèdent un attribut title.
+a[title='Cliquez ici']: «Tous la balises <a> qui possèdent un attribut title
+ayant la valeur Cliquez ici»
+a[title*='ici']: «idem, l'attribut doit contenir dans sa valeur le mot «ici».
+body > p "récupère uniquement les balises d'un parent."
+
+
+exemple :
+
+Universal selector          * { color:#555; }
+Type selectors              b { color:red; }
+Class selectors             .classname { color:blue; }
+ID selectors                #idname { background:cyan; }
+Descendant selectors        span em { color:green; }
+Child selectors             div > em { background:lime; }
+Adjacent sibling selectors  i + b { color:gray; }
+Attribute selectors         a[href='info.htm'] { color:red; }
+Pseudo-classes              a:hover { font-weight:bold; }
+Pseudo-elements             P::first-letter { font-size:300%; }
+
+**************************************************************************************************************************************
+Appliquer un temps de raction à chaque changement de div------------------------------------------------------------------------------------------**Transition.
+**************************************************************************************************************************************
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+
+//***************************************************************************************************************************************
+/////Animating styles with CSS animations----------------------------------------------------------------------------------------------**
+//***************************************************************************************************************************************
+        <style>
+            @keyframes getbigger {
+                from {
+                    width: 50px;
+                }
+                
+                to {
+                    width: 300px;
+                }
+            }
+            
+            @-webkit-keyframes getbigger {
+                from {
+                    width: 50px;
+                }
+                
+                to {
+                    width: 300px;
+                }
+            }
+            
+            #ohnoes {
+                animation-name: getbigger;
+                animation-duration: 3s;
+                /* vendor prefixes */
+                -webkit-animation-name: getbigger;
+                -webkit-animation-duration: 3s;
+            }
+            
+            #countdown:hover {
+                font-size: 150px;
+                transition: font-size 1s linear;
+            }
+        </style>
+//************************************************************************************************************************
+/////Rounded Corners----------------------------------------------------------------------------------------------------**
+//************************************************************************************************************************
+
+
+border-radius: 10px; /* CSS3 Property */
+-moz-border-radius: 10px;  /* Firefox */
+-webkit-border-radius: 10px; /* Chrome/Safari */
+-khtml-border-radius: 10px; /* Linux browsers */
+
+
+
+//************************************************************************************************************************
+////Drop Shadow---------------------------------------------------------------------------------------------------------**
+//************************************************************************************************************************
+
+#myDiv{
+-moz-box-shadow: 20px 10px 7px #ccc;
+-webkit-box-shadow: 20px 10px 7px #ccc;
+box-shadow: 20px 10px 7px #ccc;
+}
+
+//The JavaScript syntax for the same property is a as below
+object.style.boxShadow="20px 10px 7px #ccc"
+
+
+	//@media Property
+
+@media screen and (max-width: 480px) { //**responsive.
+
+}
+	
+//************************************************************************************************************************
+////Adding a Gradient Fill----------------------------------------------------------------------------------------------**
+//************************************************************************************************************************
+background: -webkit-gradient(linear, left top, left bottom, from(darkGray), to(#7A7A7A));
+
+	//Background size
+
+div
+{
+    background:url(bg.jpg);
+    background-size:800px 600px;
+    background-repeat:no-repeat;
+}
+
+	//@font face
+	
+@font-face
+{
+	font-family: mySmashingFont;
+	src: url('blitz.ttf')
+	,url('blitz.eot'); /* IE9 */
+
+}
+
+// .clearfix
+
+.clearfix {
+	display: inline-block;
+}
+
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}  
+
+// Margin: 0 auto;
+
+.myDiv {
+	margin: 0 auto;
+	width:600px;
+
+}
+
+//Overflow: hidden
+	
+div
+{
+	overflow:hidden;
+}
+
+
+/************************************************************************************************************************
+//Vertical Align Anything----------------------------------------------------------------------------------------------**
+//***********************************************************************************************************************
+
+.verticalcenter{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/************************************************************************************************************************
+// Stretch an Element To Full Window Height----------------------------------------------------------------------------**
+//***********************************************************************************************************************
+
+
+html, 
+body {
+    height: 100%;
+}
+
+Then apply 100% height to any element, like so:
+
+div {
+    height: 100%;
+}
+
+/************************************************************************************************************************
+// Applying Different Styles Based on File Format----------------------------------------------------------------------**
+//***********************************************************************************************************************
+
+Sometimes you can have several links that you want to make look different from others, in order to make it easier to know where the link is going.
+
+a[href^="http://"]{
+    padding-right: 20px;
+    background: url(external.gif) no-repeat center right;
+}
+/* emails */
+a[href^="mailto:"]{
+    padding-right: 20px;
+    background: url(email.png) no-repeat center right;
+}
+   
+/* pdfs */
+a[href$=".pdf"]{
+    padding-right: 20px;
+    background: url(pdf.png) no-repeat center right;
+}
+
+/************************************************************************************************************************
+// Cross-Browser Image Grayscale---------------------------------------------------------------------------------------**
+//***********************************************************************************************************************
+
+
+<svg xmlns="http://www.w3.org/2000/svg">
+    <filter id="grayscale">
+        <feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"/>
+    </filter>
+</svg>
+
+And to deliver this cross-browser, we use the filter property this way:
+
+img {
+    filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+/************************************************************************************************************************
+// Animating A Gradient Background-------------------------------------------------------------------------------------**
+//***********************************************************************************************************************
+
+button {
+    background-image: linear-gradient(#5187c4, #1c2f45);
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 0.5s;
+}    
+button:hover {
+    background-position: 0 0;
+}
+
+/************************************************************************************************************************
+// CSS Table Column Autowidth------------------------------------------------------------------------------------------**
+//***********************************************************************************************************************
+
+td {
+    white-space: nowrap;
+}
+
+/************************************************************************************************************************
+// Showing Box Shadow Only on One or Two Sides-------------------------------------------------------------------------**
+//***********************************************************************************************************************
+
+.box-shadow {
+    background-color: #FF8020;
+    width: 160px;
+    height: 90px;
+    margin-top: -45px;
+    margin-left: -80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.box-shadow:after {
+    content: "";
+    width: 150px;
+    height: 1px;
+    margin-top: 88px;
+    margin-left: -75px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    -webkit-box-shadow: 0px 0px 8px 2px #000000;
+       -moz-box-shadow: 0px 0px 8px 2px #000000;
+            box-shadow: 0px 0px 8px 2px #000000;
+}
+
+/*************************************************************************************************************************
+//Wrapping Long Text Context--------------------------------------------------------------------------------------------**
+//************************************************************************************************************************
+
+If you ever come across a word that is longer than the container itself.
+
+pre {
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+/*************************************************************************************************************************
+//Making the Blurry Text------------------------------------------------------------------------------------------------**
+//************************************************************************************************************************
+
+Want to turn text blurry? 
+
+.blurry-text {
+   color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/*************************************************************************************************************************
+//Animating Ellipsis Using CSS Animation(loading animation)-------------------------------------------------------------**
+//************************************************************************************************************************
+
+loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis 2s infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+}
+@keyframes ellipsis {
+    from {
+        width: 2px;
+    }
+    to {
+        width: 15px;
+    }
+}
+
+
+/*************************************************************************************************************************
+/////MÉMENTO DES BALISES HTML-------------------------------------------------------------------------------------------**
+//************************************************************************************************************************
+1. Balises de premier niveau
+
+	<html> Balise principale
+
+	<head>En-tête de la page
+
+	<body>Corps de la page
+
+	Exemple:
+
+		<!DOCTYPE html>
+		<html>
+		    <head>
+		        <meta charset="utf-8" />
+		        <title>Titre</title>
+		    </head>
+
+		    <body>
+		    
+		    </body>
+		</html>
+
+2. Balises d'en-tête
+
+	<link /> Liaison avec une feuille de style
+
+	<meta /> Métadonnées de la page web (charset, mots-clés, etc.)
+
+	<script> Code JavaScript
+
+	<style>  Code CSS
+
+	<title>  Titre de la page
+
+3. Balises de structuration du texte
+
+	<abbr>  	  Abréviation
+	<blockquote>  Citation (longue)
+	<cite>		  Citation du titre d'une œuvre ou d'un évènement
+	<q>			  Citation (courte)
+	<sup>         Exposant
+	<sub>         Indice
+	<strong>      Mise en valeur forte
+	<em>          Mise en valeur normale
+	<mark>        Mise en valeur visuelle
+	<h1>          Titre de niveau 1
+	<h2>          Titre de niveau 2
+	<h3>          Titre de niveau 3
+	<h4>          Titre de niveau 4
+	<h5>          Titre de niveau 5
+	<h6>          Titre de niveau 6
+	<img />       Image
+	<figure>      Figure (image, code, etc.)
+	<figcaption>  Description de la figure
+	<audio>       Son
+	<video>       Vidéo
+	<source>      Format source pour les balises <audio> et <video>
+	<a>           Lien hypertexte
+	<br />        Retour à la ligne
+	<p>           Paragraphe
+	<hr />        Ligne de séparation horizontale
+	<address>     Adresse de contact
+	<del>         Texte supprimé
+	<ins>         Texte inséré
+	<dfn>         Définition
+	<kbd>         Saisie clavier
+	<pre>         Affichage formaté (pour les codes sources)
+	<progress>    Barre de progression
+	<time>        Date ou heure
+
+4. Balises de listes
+
+	<ul>  Liste à puces, non numérotée
+	<ol>  Liste numérotée
+	<li>  Élément de la liste à puces
+	<dl>  Liste de définitions
+	<dt>  Terme à définir
+	<dd>  Définition du terme
+
+5. Balises de tableau
+	
+	<table>     Tableau
+    <caption>   Titre du tableau
+    <tr>        Ligne de tableau
+    <th>        Cellule d'en-tête
+    <td>        Cellule
+    <thead>     Section de l'en-tête du tableau
+    <tbody>     Section du corps du tableau
+    <tfoot>     Section du pied du tableau
+
+6. Balises de formulaire
+
+	<form>       Formulaire
+	<fieldset>   Groupe de champs
+	<legend>     Titre d'un groupe de champs
+	<label>      Libellé d'un champ
+	<input />    Champ de formulaire (texte, mot de passe, case à cocher, bouton, etc.)
+	<textarea>   Zone de saisie multiligne
+	<select>     Liste déroulante
+	<option>     Élément d'une liste déroulante
+	<optgroup>   Groupe d'éléments dune liste déroulante
+
+7. Balises sectionnantes
+
+	Ces balises permettent de construire le squelette de notre site web.
+
+	<header>    En-tête
+	<nav>       Liens principaux de navigation
+    <footer>    Pied de page
+    <section>   Section de page
+    <article>   Article (contenu autonome)
+    <aside>     Informations complémentaires
+
+8. Balises génériques
+
+	Les balises génériques sont des balises qui nont pas de sens sémantique.
+
+	<span>      Balise générique de type inline
+	<div>       Balise générique de type block
+
+
+
+/*************************************************************************************************************************
+//MÉMENTO DES PROPRIÉTÉS CSS------------------------------------------------------------------- ------------------------**
+//************************************************************************************************************************
+1. Propriétés de mise en forme du texte----------------------------------------------------------------------------------------------------------------------------//mise en forme
+
+
+font-family	   		police1, police2, police3, serif, sans-serif, monospace        Nom de police
+
+@font-face     		Nom et source de la police  								   Police personnalisée
+
+font-size      		1.3em, 16px, 120%...										   Taille du texte
+
+font-weight    		bold, normal                                                   Gras
+
+font-style     		italic, oblique, normal                                        Italique
+
+text-decoration     underline, overline, line-through, blink, none                 Soulignement, ligne au-dessus, barré ou 																					   lignotant.
+font-variant        small-caps, normal                                             Petites capitales
+
+text-transform      capitalize, lowercase, uppercase                               Capitales
+
+font                px, 1.3em,                     								   font-weight, font-style, font-                                                                                   variant, font-family.
+
+text-align          left, center, right, justify                                   Alignement horizontal.
+
+vertical-align      baseline, middle, sub, super, top, bottom                      Alignement vertical (cellules de tableau ou 
+                                                                                   éléments inline-block uniquement)
+
+ line-height        18px, 120%, normal...                                          Hauteur de ligne
+ 
+ text-indent        25px                                                           Alinéa
+
+ white-space        pre, nowrap, normal                                            Césure
+
+ word-wrap          break-word, normal                                             Césure forcée
+
+ text-shadow        5px 5px 2px blue                                               Ombre de texte
+                    (horizontale, verticale, fondu, couleur)
+
+
+ 2. Propriétés de couleur et de fond-------------------------------------------------------------------------------------------------------------------------------------//background
+
+ color              nom, rgb(rouge,vert,bleu), rgba(rouge,vert,bleu,               Couleur du texte
+ 					transparence), #CF1A20...
+
+ 
+ background-color   Identique à color                                              Couleur de fond
+
+
+ background-image      url('image.png')                                               Image de fond
+
+
+background-attachment  fixed, scroll                                               Fond fixe
+
+
+background-repeat      repeat-x, repeat-y, no-repeat, repeat                       Répétition du fond
+
+
+background-position     (x y), top, center, bottom, left, right                    Position du fond
+
+
+background 
+
+background-image, 
+
+background-repeat,
+
+background-attachment, 
+
+background-position
+
+background-size:       cover                                                      image prends la taille de l'ecran.
+
+ opacity              0.5                                                         Transparence
+
+ background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,.4));           linear gradient, start at the bottom of the html element with black alpha 100%, and ends with 40% opacity.
+
+ background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));      safari
+ background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));         firefox
+
+ 3. Propriétés des boîtes---------------------------------------------------------------------------------------------------------------------------------------------------------------//Div
+
+ width                   150px, 80%...                                            Largeur
+
+ height                  150px, 80%...                                            Hauteur
+
+ min-width               150px, 80%...                                            Largeur minimale
+
+ max-width               150px, 80%...                                            Largeur maximale
+
+ min-height              150px, 80%...                                            Hauteur minimale
+
+ max-height              150px, 80%...                                            Hauteur maximale
+
+ margin-top              23px                                                     Marge en haut
+
+ margin-left             23px                                                     Marge à gauche
+
+ margin-right            23px                                                     Marge à droite
+
+ margin-bottom			 23px													  Marge en bas
+
+ margin                  23px 5px 23px 5px                                        Combine : margin-top, margin-right, margin-               (haut, droite, bas, gauche)                                       bottom, margin-left.
+
+ padding-left            23px                                                     Marge intérieure à gauche
+
+ padding-right           23px                                                     Marge intérieure à droite
+
+ padding-right           23px                                                     Marge intérieure à droite
+
+ padding-bottom          23px                                                     Marge intérieure en bas
+
+ padding-top             23px                                                     Marge intérieure en haut
+ 
+ padding                 23px 5px 23px 5px                                        padding-top, padding-right, padding-bottom, 
+                         (haut, droite, bas, gauche)                              padding-left.
+
+
+border-width            3px                                                       Épaisseur de bordure
+
+border-color            nom, rgb(rouge,vert,bleu), rgba(rouge,vert,               Couleur de bordure 
+                        bleu,transparence), #CF1A20...
+
+border-style            solid, dotted, dashed, double, groove,                    Type de bordure
+                        ridge, inset, outset 
+
+
+border                  3px solid black                                           border-width, border-color, border-style.
+                                                                                  Existe aussi en version border-top, border-right, border-bottom, border-left.
+
+                         
+border-radius           5px                                                       Bordure arrondie
+
+box-shadow              6px 6px 0px black                                         Ombre de boîte
+                       (horizontale, verticale, fondu, couleur)
+
+
+4. Propriétés de positionnement et d'affichage-------------------------------------------------------------------------------------------------------------------------------------------//position
+
+display                 block, inline, inline-block, table, table-cell, none...   (block, inline, inline-block, none…)
+
+visibility             visible, hidden                                             Visibilité
+
+clip                    rect (0px, 60px, 30px, 0px)                               Affichage d'une partie de l'élément
+                        rect (haut, droite, bas, gauche)
+
+overflow               auto, scroll, visible, hidden                               Comportement en cas de dépassement
+
+float                   left, right, none                                          Flottant
+
+clear                   left, right, both, none                                    Arrêt d'un flottant
+
+ position               relative, absolute, static                                 Positionnement
+
+ top                    20px                                                       Position par rapport au haut
+ 
+ bottom                 20px                                                       Position par rapport au bas
+
+ left                   20px                                                       Position par rapport à la gauche
+
+ right                  20px                                                       Position par rapport à la droite
+
+ z-index                10                                                         Ordre d'affichage en cas de superposition.
+                                                                                   La plus grande valeur est affichée par-dessus les autres.
+
+5. Propriétés des listes
+
+list-style-type         disc, circle, square, decimal, lower-roman,               Type de liste
+                        upper-roman, lower-alpha, upper-alpha, none
+
+list-style-position     inside, outside                                           Position en retrait
+
+list-style-image        url('puce.png')                                           Puce personnalisée
+
+list-style                                                                       list-style-type, list-style-position, 
+                                                                                 list-style-image.
+
+
+6. Propriétés des tableaux-------------------------------------------------------------------------------------------------------------------------------------------------------------//tableau
+
+border-collapse        collapse, separate                                        Fusion des bordures
+
+empty-cells            hide, show                                                Affichage des cellules vides
+
+caption-side           bottom, top                                               Position du titre du tableau
+
+7. Autres propriétés
+
+cursor                 crosshair, default, help, move, pointer, progress, text,  Curseur de souris
+                       wait, e-resize, ne-resize, auto...
+
+
+
+
+
+
+
+
